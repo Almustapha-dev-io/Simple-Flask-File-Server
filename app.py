@@ -56,5 +56,10 @@ def multi_file_handler():
     return jsonify(msg="File received", data=None)
 
 
+@app.errorhandler(413)
+def content_too_long(e):
+    return jsonify(msg="File too large", data=None), 413
+
+
 if __name__ == "__main__":
     app.run(port=5000, debug=True)
